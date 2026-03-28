@@ -24,6 +24,7 @@ A fully responsive, multi-page plant care tracking web application built with pu
 Demo Link: " https://bhargavi2048-boop.github.io/Verdant_PlantCare-Tracker/ "
 
 Demo Video: " https://drive.google.com/file/d/1I4iDFCtrq4vQ0scDGlLVBSMbGQH-CYQo/view?usp=sharing "
+
 Open `index.html` directly in any modern browser — no server or build tools required.
 
 ---
