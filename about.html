@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Verdant</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand"><a href="index.html" style="text-decoration:none;color:inherit;">🌿 <span>Verdant</span></a></div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">My Garden</a></li>
+    <li><a href="schedule.html" class="nav-link">Schedule</a></li>
+    <li><a href="library.html" class="nav-link">Plant Library</a></li>
+    <li><a href="tips.html" class="nav-link">Care Tips</a></li>
+    <li><a href="about.html" class="nav-link active">About</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">My Garden</a>
+  <a href="schedule.html" onclick="toggleMenu()">Schedule</a>
+  <a href="library.html" onclick="toggleMenu()">Plant Library</a>
+  <a href="tips.html" onclick="toggleMenu()">Care Tips</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+</div>
+
+<div class="page-hero">
+  <p class="hero-eyebrow">Our Story</p>
+  <h1>About <em>Verdant</em></h1>
+  <p>Why we built a home for plant lovers everywhere</p>
+</div>
+
+<section class="about-page-section">
+
+  <div class="about-story">
+    <div class="story-text">
+      <h2>Born from a <em>wilted monstera</em></h2>
+      <p>Verdant started when its creator forgot to water a beloved Monstera for three weeks. After watching it recover slowly, we realised there had to be a better way — a simple, beautiful tool to help people remember, track, and truly enjoy caring for their plants.</p>
+      <p>We believe plants make life better. They clean the air, calm the mind, and bring a little nature indoors. But keeping them alive shouldn't feel stressful. Verdant makes it effortless.</p>
+    </div>
+    <div class="story-visual">
+      <div class="big-emoji">🌿</div>
+      <div class="story-leaves">
+        <span>🍃</span><span>🌱</span><span>🌺</span><span>🪴</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-grid">
+    <h2 style="grid-column:1/-1;font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:0.5rem;">What Verdant <em>offers</em></h2>
+    <div class="feature-block">
+      <span>🌱</span>
+      <h3>My Garden</h3>
+      <p>Track all your plants in one place with watering status, care notes, and health indicators.</p>
+    </div>
+    <div class="feature-block">
+      <span>📅</span>
+      <h3>Smart Schedule</h3>
+      <p>Visual weekly calendar showing exactly which plant needs care each day.</p>
+    </div>
+    <div class="feature-block">
+      <span>📚</span>
+      <h3>Plant Library</h3>
+      <p>Browse 50+ plants with care guides, difficulty ratings, and pet-safety info.</p>
+    </div>
+    <div class="feature-block">
+      <span>💡</span>
+      <h3>Expert Tips</h3>
+      <p>Curated advice on watering, light, soil, pests, and seasonal care from real gardeners.</p>
+    </div>
+    <div class="feature-block">
+      <span>🔔</span>
+      <h3>Reminders</h3>
+      <p>Never forget watering day again with customisable morning and evening alerts.</p>
+    </div>
+    <div class="feature-block">
+      <span>🎯</span>
+      <h3>Plant Quiz</h3>
+      <p>Find your perfect plant match based on your lifestyle and home environment.</p>
+    </div>
+  </div>
+
+  <div class="mission-banner">
+    <h2>"Every plant deserves <em>a little attention.</em>"</h2>
+    <p>Verdant is designed to make plant care accessible, joyful, and sustainable for everyone — from first-time plant parents to seasoned green thumbs.</p>
+    <a href="index.html" class="btn-primary" style="display:inline-block;margin-top:1.5rem;">Start Tracking →</a>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <h2>Get In Touch 🌿</h2>
+    <div class="contact-form">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="e.g. Bhargavi N"/>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com"/>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea rows="4" placeholder="Tell us about your plants or any questions!"></textarea>
+      </div>
+      <button class="btn-primary" onclick="submitContact()">Send Message 🌿</button>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">🌿 Verdant</div>
+    <nav class="footer-nav">
+      <a href="index.html">My Garden</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="library.html">Plant Library</a>
+      <a href="tips.html">Care Tips</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© 2026 Verdant Plant Care Tracker. Made with 🌿 and love.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="main.js"></script>
+<script>
+function submitContact() {
+  const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+  let filled = true;
+  inputs.forEach(i => { if (!i.value.trim()) filled = false; });
+  if (!filled) { showToast('⚠️ Please fill in all fields!'); return; }
+  inputs.forEach(i => i.value = '');
+  showToast('✅ Message sent! We\'ll reply soon 🌿');
+}
+</script>
+</body>
+</html>

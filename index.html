@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verdant — Plant Care Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-brand">🌿 <span>Verdant</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link active">My Garden</a></li>
+    <li><a href="schedule.html" class="nav-link">Schedule</a></li>
+    <li><a href="library.html" class="nav-link">Plant Library</a></li>
+    <li><a href="tips.html" class="nav-link">Care Tips</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">My Garden</a>
+  <a href="schedule.html" onclick="toggleMenu()">Schedule</a>
+  <a href="library.html" onclick="toggleMenu()">Plant Library</a>
+  <a href="tips.html" onclick="toggleMenu()">Care Tips</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Your Personal Green Space</p>
+    <h1 class="hero-title">Nurture Every<br/><em>Leaf & Root</em></h1>
+    <p class="hero-desc">Track watering schedules, monitor plant health, and never let a plant wilt again. Your garden, perfectly organised.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="openAddModal()">+ Add a Plant</button>
+      <a href="schedule.html" class="btn-ghost">View Schedule →</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-pill">🌱 <strong id="totalPlants">8</strong> Plants</div>
+    <div class="stat-pill">💧 <strong id="needsWater">3</strong> Need Water Today</div>
+    <div class="stat-pill">☀️ <strong id="healthy">5</strong> Healthy</div>
+  </div>
+</header>
+
+<!-- FILTER -->
+<section class="garden-section">
+  <div class="section-top">
+    <h2 class="section-title">My Garden</h2>
+    <div class="filter-row">
+      <button class="tag-btn active" onclick="filterGarden('all',this)">All</button>
+      <button class="tag-btn" onclick="filterGarden('indoor',this)">🏠 Indoor</button>
+      <button class="tag-btn" onclick="filterGarden('outdoor',this)">🌤️ Outdoor</button>
+      <button class="tag-btn" onclick="filterGarden('succulents',this)">🪴 Succulents</button>
+      <button class="tag-btn" onclick="filterGarden('herbs',this)">🌿 Herbs</button>
+    </div>
+  </div>
+
+  <!-- PLANT CARDS GRID -->
+  <div class="plant-grid" id="plantGrid">
+
+    <div class="plant-card" data-type="indoor" data-id="1">
+      <div class="plant-emoji">🌺</div>
+      <div class="plant-info">
+        <h3>Peace Lily</h3>
+        <span class="plant-type-badge indoor">Indoor</span>
+        <div class="plant-meta">
+          <span>💧 Every 7 days</span>
+          <span>☀️ Low light</span>
+        </div>
+        <div class="water-bar-wrap">
+          <div class="water-bar" style="width:30%"></div>
+        </div>
+        <p class="water-label">⚠️ Water today!</p>
+      </div>
+      <div class="card-actions">
+        <button class="btn-water" onclick="waterPlant(this, 'Peace Lily')">💧 Water</button>
+        <button class="btn-details" onclick="showDetails('Peace Lily','🌺','Indoor','7 days','Low light','Drooping leaves mean it needs water. Yellowing = overwatering.')">Details</button>
+      </div>
+    </div>
+
+    <div class="plant-card" data-type="succulents" data-id="2">
+      <div class="plant-emoji">🌵</div>
+      <div class="plant-info">
+        <h3>Cactus</h3>
+        <span class="plant-type-badge succulent">Succulent</span>
+        <div class="plant-meta">
+          <span>💧 Every 21 days</span>
+          <span>☀️ Bright light</span>
+        </div>
+        <div class="water-bar-wrap">
+          <div class="water-bar" style="width:85%"></div>
+        </div>
+        <p class="water-label">✅ Well watered</p>
+      </div>
+      <div class="card-actions">
+        <button class="btn-water" onclick="waterPlant(this, 'Cactus')">💧 Water</button>
+        <button class="btn-details" onclick="showDetails('Cactus','🌵','Succulent','21 days','Bright direct light','Less is more — overwatering causes root rot. Dry soil completely between watering.')">Details</button>
+      </div>
+    </div>
+
+    <div class="plant-card" data-type="herbs" data-id="3">
+      <div class="plant-emoji">🌿</div>
+      <div class="plant-info">
+        <h3>Basil</h3>
+        <span class="plant-type-badge herb">Herb</span>
+        <div class="plant-meta">
+          <span>💧 Every 3 days</span>
+          <span>☀️ Bright indirect</span>
+        </div>
+        <div class="water-bar-wrap">
+          <div class="water-bar" style="width:20%"></div>
+        </div>
+        <p class="water-label">🚨 Urgent: Water now!</p>
+      </div>
+      <div class="card-actions">
+        <button class="btn-water" onclick="waterPlant(this, 'Basil')">💧 Water</button>
+        <button class="btn-details" onclick="showDetails('Basil','🌿','Herb','3 days','Bright indirect light','Pinch off flower buds to keep leaves growing. Keep soil moist but not soggy.')">Details</button>
+      </div>
+    </div>
+
+    <div class="plant-card" data-type="indoor" data-id="4">
+      <div class="plant-emoji">🪴</div>
+      <div class="plant-info">
+        <h3>Monstera</h3>
+        <span class="plant-type-badge indoor">Indoor</span>
+        <div class="plant-meta">
+          <span>💧 Every 10 days</span>
+          <span>☀️ Medium light</span>
+        </div>
+        <div class="water-bar-wrap">
+          <div class="water-bar" style="width:65%"></div>
+        </div>
+        <p class="water-label">💧 Water in 3 days</p>
+      </div>
+      <div class="card-actions">
+        <button class="btn-water" onclick="waterPlant(this, 'Monstera')">💧 Water</button>
+        <button class="btn-details" onclick="showDetails('Monstera','🪴','Indoor','10 days','Medium indirect light','Wipe leaves monthly. The splits in leaves appear as it matures — totally normal!')">Details</button>
+      </div>
+    </div>
+
+    <div class="plant-card" data-type="outdoor" data-id="5">
+      <div class="plant-emoji">🌻</div>
+      <div class="plant-info">
+        <h3>Sunflower</h3>
+        <span class="plant-type-badge outdoor">Outdoor</span>
+        <div class="plant-meta">
+          <span>💧 Every 4 days</span>
+          <span>☀️ Full sun</span>
+        </div>
+        <div class="water-bar-wrap">
+          <div class="water-bar" style="width:50%"></div>
+        </div>
+        <p class="water-label">💧 Water in 2 days</p>
+      </div>
+      <div class="card-actions">
+        <button class="btn-water" onclick="waterPlant(this, 'Sunflower')">💧 Water</button>
+        <button class="btn-details" onclick="showDetails('Sunflower','🌻','Outdoor','4 days','Full sun 6–8 hrs','Water deeply at base. Young plants need more water. Heads follow the sun when young.')">Details</button>
+      </div>
+    </div>
+
+    <div class="plant-card" data-type="succulents" data-id="6">
+      <div class="plant-emoji">🌷</div>
+      <div class="plant-info">
+        <h3>Aloe Vera</h3>
+        <span class="plant-type-badge succulent">Succulent</span>
+        <div class="plant-meta">
+          <span>💧 Every 14 days</span>
+          <span>☀️ Bright indirect</span>
+        </div>
+        <div class="water-bar-wrap">
+          <div class="water-bar" style="width:75%"></div>
+        </div>
+        <p class="water-label">✅ Well watered</p>
+      </div>
+      <div class="card-actions">
+        <button class="btn-water" onclick="waterPlant(this, 'Aloe Vera')">💧 Water</button>
+        <button class="btn-details" onclick="showDetails('Aloe Vera','🌷','Succulent','14 days','Bright indirect light','Gel inside leaves soothes burns. Let soil dry fully between waterings.')">Details</button>
+      </div>
+    </div>
+
+    <div class="plant-card" data-type="herbs" data-id="7">
+      <div class="plant-emoji">🌱</div>
+      <div class="plant-info">
+        <h3>Mint</h3>
+        <span class="plant-type-badge herb">Herb</span>
+        <div class="plant-meta">
+          <span>💧 Every 2 days</span>
+          <span>☀️ Partial shade</span>
+        </div>
+        <div class="water-bar-wrap">
+          <div class="water-bar" style="width:15%"></div>
+        </div>
+        <p class="water-label">🚨 Urgent: Water now!</p>
+      </div>
+      <div class="card-actions">
+        <button class="btn-water" onclick="waterPlant(this, 'Mint')">💧 Water</button>
+        <button class="btn-details" onclick="showDetails('Mint','🌱','Herb','2 days','Partial shade','Grow in a pot to stop spreading. Pinch tips to keep bushy and productive.')">Details</button>
+      </div>
+    </div>
+
+    <div class="plant-card" data-type="indoor" data-id="8">
+      <div class="plant-emoji">🍃</div>
+      <div class="plant-info">
+        <h3>Pothos</h3>
+        <span class="plant-type-badge indoor">Indoor</span>
+        <div class="plant-meta">
+          <span>💧 Every 7 days</span>
+          <span>☀️ Low–medium</span>
+        </div>
+        <div class="water-bar-wrap">
+          <div class="water-bar" style="width:55%"></div>
+        </div>
+        <p class="water-label">💧 Water in 3 days</p>
+      </div>
+      <div class="card-actions">
+        <button class="btn-water" onclick="waterPlant(this, 'Pothos')">💧 Water</button>
+        <button class="btn-details" onclick="showDetails('Pothos','🍃','Indoor','7 days','Low to medium light','Extremely forgiving. Trailing vines look beautiful on shelves. Propagates easily in water.')">Details</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADD PLANT MODAL -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAddModal()">✕</button>
+    <h2>🌱 Add New Plant</h2>
+    <div class="form-group">
+      <label>Plant Name</label>
+      <input type="text" id="newName" placeholder="e.g. Snake Plant" />
+    </div>
+    <div class="form-group">
+      <label>Emoji</label>
+      <input type="text" id="newEmoji" placeholder="🌿" maxlength="2"/>
+    </div>
+    <div class="form-group">
+      <label>Type</label>
+      <select id="newType">
+        <option value="indoor">🏠 Indoor</option>
+        <option value="outdoor">🌤️ Outdoor</option>
+        <option value="succulents">🪴 Succulent</option>
+        <option value="herbs">🌿 Herb</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Watering Frequency</label>
+      <select id="newFreq">
+        <option>Every 2 days</option>
+        <option>Every 3 days</option>
+        <option selected>Every 7 days</option>
+        <option>Every 10 days</option>
+        <option>Every 14 days</option>
+        <option>Every 21 days</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Light Requirement</label>
+      <select id="newLight">
+        <option>Low light</option>
+        <option>Medium indirect</option>
+        <option selected>Bright indirect</option>
+        <option>Bright direct / Full sun</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-primary" onclick="addPlant()">Add Plant 🌱</button>
+      <button class="btn-ghost" onclick="closeAddModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- DETAILS MODAL -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeDetailModal()">✕</button>
+    <div class="detail-header">
+      <span class="detail-emoji" id="dEmoji"></span>
+      <div>
+        <h2 id="dName"></h2>
+        <span class="plant-type-badge indoor" id="dType"></span>
+      </div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-item"><p class="dl">💧 Watering</p><p class="dv" id="dFreq"></p></div>
+      <div class="detail-item"><p class="dl">☀️ Light</p><p class="dv" id="dLight"></p></div>
+    </div>
+    <div class="detail-note">
+      <p class="dl">📝 Care Note</p>
+      <p id="dNote"></p>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-primary" onclick="closeDetailModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">🌿 Verdant</div>
+    <nav class="footer-nav">
+      <a href="index.html">My Garden</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="library.html">Plant Library</a>
+      <a href="tips.html">Care Tips</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© 2026 Verdant Plant Care Tracker. Made with 🌿 and love.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

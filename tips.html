@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Care Tips | Verdant</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand"><a href="index.html" style="text-decoration:none;color:inherit;">🌿 <span>Verdant</span></a></div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">My Garden</a></li>
+    <li><a href="schedule.html" class="nav-link">Schedule</a></li>
+    <li><a href="library.html" class="nav-link">Plant Library</a></li>
+    <li><a href="tips.html" class="nav-link active">Care Tips</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">My Garden</a>
+  <a href="schedule.html" onclick="toggleMenu()">Schedule</a>
+  <a href="library.html" onclick="toggleMenu()">Plant Library</a>
+  <a href="tips.html" onclick="toggleMenu()">Care Tips</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+</div>
+
+<div class="page-hero">
+  <p class="hero-eyebrow">Expert Advice</p>
+  <h1>Plant Care <em>Tips</em></h1>
+  <p>Learn how to keep your plants thriving all year long</p>
+</div>
+
+<section class="tips-section">
+
+  <div class="tips-filter">
+    <button class="tag-btn active" onclick="filterTips('all',this)">All Tips</button>
+    <button class="tag-btn" onclick="filterTips('watering',this)">💧 Watering</button>
+    <button class="tag-btn" onclick="filterTips('light',this)">☀️ Light</button>
+    <button class="tag-btn" onclick="filterTips('soil',this)">🪨 Soil</button>
+    <button class="tag-btn" onclick="filterTips('pests',this)">🐛 Pests</button>
+    <button class="tag-btn" onclick="filterTips('seasonal',this)">🍂 Seasonal</button>
+  </div>
+
+  <div class="tips-grid" id="tipsGrid">
+
+    <div class="tip-card" data-cat="watering">
+      <div class="tip-icon">💧</div>
+      <h3>The Finger Test</h3>
+      <p>Before watering, stick your finger 2–3 cm into the soil. If it feels dry, water. If moist, wait. This simple test beats any schedule for most plants.</p>
+      <span class="tip-tag">Watering</span>
+    </div>
+
+    <div class="tip-card" data-cat="watering">
+      <div class="tip-icon">🚿</div>
+      <h3>Water Deeply, Not Often</h3>
+      <p>Water thoroughly until it drains from the bottom. This encourages roots to grow deep. Shallow, frequent watering keeps roots near the surface and weakens the plant.</p>
+      <span class="tip-tag">Watering</span>
+    </div>
+
+    <div class="tip-card" data-cat="light">
+      <div class="tip-icon">☀️</div>
+      <h3>Rotate Your Plants</h3>
+      <p>Give your pot a quarter turn every week so all sides receive equal sunlight. This prevents lopsided growth and keeps your plant looking symmetrical and healthy.</p>
+      <span class="tip-tag">Light</span>
+    </div>
+
+    <div class="tip-card featured" data-cat="watering">
+      <div class="tip-icon">❄️</div>
+      <h3>Room Temperature Water</h3>
+      <p>Always use room-temperature water. Cold water shocks tropical plant roots and can cause leaf drop or stunted growth. Leave tap water overnight — it also lets chlorine evaporate.</p>
+      <span class="tip-tag">Watering</span>
+    </div>
+
+    <div class="tip-card" data-cat="light">
+      <div class="tip-icon">🪟</div>
+      <h3>Understanding Windows</h3>
+      <p>South-facing windows give the most light. East gets gentle morning sun. West gets strong afternoon sun. North is lowest light — perfect for shade-lovers like ferns.</p>
+      <span class="tip-tag">Light</span>
+    </div>
+
+    <div class="tip-card" data-cat="soil">
+      <div class="tip-icon">🪨</div>
+      <h3>Drainage is Everything</h3>
+      <p>Always use pots with drainage holes. Sitting in water causes root rot — the #1 killer of houseplants. Add a layer of pebbles or use well-draining potting mix.</p>
+      <span class="tip-tag">Soil</span>
+    </div>
+
+    <div class="tip-card" data-cat="pests">
+      <div class="tip-icon">🐛</div>
+      <h3>Spot Pests Early</h3>
+      <p>Check leaves weekly — top and underside. Common pests: spider mites (tiny dots), mealybugs (white fluff), fungus gnats (tiny flies). Catching them early makes treatment simple.</p>
+      <span class="tip-tag">Pests</span>
+    </div>
+
+    <div class="tip-card" data-cat="pests">
+      <div class="tip-icon">🧴</div>
+      <h3>Neem Oil Solution</h3>
+      <p>Mix 2 tsp neem oil + 1 tsp dish soap + 1L water. Spray on leaves weekly as a natural pesticide and fungicide. Safe for most plants and highly effective.</p>
+      <span class="tip-tag">Pests</span>
+    </div>
+
+    <div class="tip-card" data-cat="seasonal">
+      <div class="tip-icon">🍂</div>
+      <h3>Winter Adjustments</h3>
+      <p>Most plants need less water in winter as growth slows. Reduce watering frequency by 30–50%. Keep plants away from cold drafts and heating vents which dry the air.</p>
+      <span class="tip-tag">Seasonal</span>
+    </div>
+
+    <div class="tip-card" data-cat="seasonal">
+      <div class="tip-icon">🌸</div>
+      <h3>Spring Repotting</h3>
+      <p>Spring is the best time to repot. Choose a pot only 2–5 cm larger than the current one. Too large and the soil stays wet too long, risking rot.</p>
+      <span class="tip-tag">Seasonal</span>
+    </div>
+
+    <div class="tip-card" data-cat="soil">
+      <div class="tip-icon">🌱</div>
+      <h3>Feed in Growing Season</h3>
+      <p>Fertilise every 2–4 weeks in spring and summer. Use a balanced liquid fertiliser diluted to half strength. Never fertilise in winter — plants are resting.</p>
+      <span class="tip-tag">Soil</span>
+    </div>
+
+    <div class="tip-card featured" data-cat="light">
+      <div class="tip-icon">🌡️</div>
+      <h3>Watch the Temperature</h3>
+      <p>Most houseplants thrive at 15–25°C. Sudden temperature changes stress plants. Keep them away from AC vents, open windows in winter, and cold glass panes.</p>
+      <span class="tip-tag">Light</span>
+    </div>
+
+  </div>
+
+  <!-- QUICK QUIZ -->
+  <div class="quiz-section">
+    <h2>🌿 Quick Care Quiz</h2>
+    <p>Find out which plant suits your lifestyle!</p>
+    <div class="quiz-box" id="quizBox">
+      <p class="quiz-q" id="quizQ">How much time can you spend on plant care each week?</p>
+      <div class="quiz-options" id="quizOptions">
+        <button class="quiz-opt" onclick="nextQ(0)">⏱️ Under 5 minutes</button>
+        <button class="quiz-opt" onclick="nextQ(1)">🕐 5–15 minutes</button>
+        <button class="quiz-opt" onclick="nextQ(2)">🕑 15–30 minutes</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">🌿 Verdant</div>
+    <nav class="footer-nav">
+      <a href="index.html">My Garden</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="library.html">Plant Library</a>
+      <a href="tips.html">Care Tips</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© 2026 Verdant Plant Care Tracker. Made with 🌿 and love.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="main.js"></script>
+<script>
+function filterTips(cat, btn) {
+  document.querySelectorAll('.tips-filter .tag-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tip-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? '' : 'none';
+  });
+}
+
+const questions = [
+  { q: 'How much time can you spend on plant care each week?', opts: ['⏱️ Under 5 minutes', '🕐 5–15 minutes', '🕑 15–30 minutes'] },
+  { q: 'How much natural light does your space get?', opts: ['🌑 Very little', '🌤️ Moderate', '☀️ Bright & sunny'] },
+  { q: 'Do you have pets at home?', opts: ['🐱 Yes, cats', '🐶 Yes, dogs', '❌ No pets'] },
+];
+const results = [
+  '🌵 Cactus or 🌱 Snake Plant — ultra low maintenance!',
+  '🍃 Pothos or 🪴 Monstera — perfect for your lifestyle!',
+  '🌸 Orchid or 🌿 Boston Fern — you can handle a challenge!',
+];
+let step = 0;
+function nextQ(choice) {
+  step++;
+  if (step >= questions.length) {
+    document.getElementById('quizQ').textContent = '🎉 Your perfect plant: ' + results[choice];
+    document.getElementById('quizOptions').innerHTML = '<button class="quiz-opt" onclick="restartQuiz()">🔄 Try Again</button>';
+    return;
+  }
+  document.getElementById('quizQ').textContent = questions[step].q;
+  document.getElementById('quizOptions').innerHTML = questions[step].opts.map((o,i)=>`<button class="quiz-opt" onclick="nextQ(${i})">${o}</button>`).join('');
+}
+function restartQuiz() {
+  step = 0;
+  document.getElementById('quizQ').textContent = questions[0].q;
+  document.getElementById('quizOptions').innerHTML = questions[0].opts.map((o,i)=>`<button class="quiz-opt" onclick="nextQ(${i})">${o}</button>`).join('');
+}
+</script>
+</body>
+</html>

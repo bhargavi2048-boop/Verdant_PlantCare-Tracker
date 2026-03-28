@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Schedule | Verdant</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand"><a href="index.html" style="text-decoration:none;color:inherit;">🌿 <span>Verdant</span></a></div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">My Garden</a></li>
+    <li><a href="schedule.html" class="nav-link active">Schedule</a></li>
+    <li><a href="library.html" class="nav-link">Plant Library</a></li>
+    <li><a href="tips.html" class="nav-link">Care Tips</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">My Garden</a>
+  <a href="schedule.html" onclick="toggleMenu()">Schedule</a>
+  <a href="library.html" onclick="toggleMenu()">Plant Library</a>
+  <a href="tips.html" onclick="toggleMenu()">Care Tips</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+</div>
+
+<div class="page-hero">
+  <p class="hero-eyebrow">Stay On Track</p>
+  <h1>Watering <em>Schedule</em></h1>
+  <p>Your weekly care plan at a glance</p>
+</div>
+
+<section class="schedule-section">
+
+  <div class="week-header">
+    <h2>This Week</h2>
+    <div class="week-nav">
+      <button class="nav-arrow" onclick="showToast('Previous week loaded!')">‹ Prev</button>
+      <span id="weekRange">Mar 24 – Mar 30, 2026</span>
+      <button class="nav-arrow" onclick="showToast('Next week loaded!')">Next ›</button>
+    </div>
+  </div>
+
+  <div class="week-grid">
+    <div class="day-col">
+      <div class="day-label">Mon<span>24</span></div>
+      <div class="day-tasks">
+        <div class="task-chip done">🌺 Peace Lily</div>
+        <div class="task-chip done">🌿 Basil</div>
+      </div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Tue<span>25</span></div>
+      <div class="day-tasks">
+        <div class="task-chip done">🌱 Mint</div>
+      </div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Wed<span>26</span></div>
+      <div class="day-tasks">
+        <div class="task-chip done">🌻 Sunflower</div>
+        <div class="task-chip done">🌿 Basil</div>
+      </div>
+    </div>
+    <div class="day-col today">
+      <div class="day-label">Thu<span>27 ★</span></div>
+      <div class="day-tasks">
+        <div class="task-chip urgent">🌺 Peace Lily</div>
+        <div class="task-chip urgent">🌿 Basil</div>
+        <div class="task-chip urgent">🌱 Mint</div>
+      </div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Fri<span>28</span></div>
+      <div class="day-tasks">
+        <div class="task-chip upcoming">🌻 Sunflower</div>
+        <div class="task-chip upcoming">🍃 Pothos</div>
+      </div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Sat<span>29</span></div>
+      <div class="day-tasks">
+        <div class="task-chip upcoming">🌱 Mint</div>
+        <div class="task-chip upcoming">🪴 Monstera</div>
+      </div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Sun<span>30</span></div>
+      <div class="day-tasks">
+        <div class="task-chip upcoming">🌿 Basil</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODAY'S TASKS -->
+  <div class="today-section">
+    <h2>Today's Care Tasks</h2>
+    <div class="task-list" id="taskList">
+      <div class="task-row urgent-row">
+        <div class="task-left">
+          <span>🌺</span>
+          <div>
+            <p class="task-name">Peace Lily</p>
+            <p class="task-sub">Water — 200ml at base</p>
+          </div>
+        </div>
+        <button class="btn-done" onclick="markDone(this)">Mark Done ✓</button>
+      </div>
+      <div class="task-row urgent-row">
+        <div class="task-left">
+          <span>🌿</span>
+          <div>
+            <p class="task-name">Basil</p>
+            <p class="task-sub">Water — keep moist. Check for pests.</p>
+          </div>
+        </div>
+        <button class="btn-done" onclick="markDone(this)">Mark Done ✓</button>
+      </div>
+      <div class="task-row urgent-row">
+        <div class="task-left">
+          <span>🌱</span>
+          <div>
+            <p class="task-name">Mint</p>
+            <p class="task-sub">Water — soil should stay damp</p>
+          </div>
+        </div>
+        <button class="btn-done" onclick="markDone(this)">Mark Done ✓</button>
+      </div>
+      <div class="task-row">
+        <div class="task-left">
+          <span>🌻</span>
+          <div>
+            <p class="task-name">Sunflower</p>
+            <p class="task-sub">Check soil moisture. Water if dry.</p>
+          </div>
+        </div>
+        <button class="btn-done" onclick="markDone(this)">Mark Done ✓</button>
+      </div>
+    </div>
+    <button class="btn-primary" style="margin-top:1.5rem;" onclick="markAllDone()">✓ Mark All Done</button>
+  </div>
+
+  <!-- REMINDER SETTINGS -->
+  <div class="reminder-card">
+    <h3>🔔 Reminder Settings</h3>
+    <p>Get notified when your plants need attention.</p>
+    <div class="reminder-options">
+      <label class="toggle-label">
+        <input type="checkbox" checked onchange="showToast('Morning reminder '+(this.checked?'enabled':'disabled')+'!')"/>
+        <span class="toggle"></span>
+        Morning reminder (8:00 AM)
+      </label>
+      <label class="toggle-label">
+        <input type="checkbox" onchange="showToast('Evening reminder '+(this.checked?'enabled':'disabled')+'!')"/>
+        <span class="toggle"></span>
+        Evening reminder (6:00 PM)
+      </label>
+      <label class="toggle-label">
+        <input type="checkbox" checked onchange="showToast('Urgent alerts '+(this.checked?'enabled':'disabled')+'!')"/>
+        <span class="toggle"></span>
+        Urgent watering alerts
+      </label>
+    </div>
+    <button class="btn-primary" style="margin-top:1.2rem;" onclick="showToast('✅ Reminder preferences saved!')">Save Preferences</button>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">🌿 Verdant</div>
+    <nav class="footer-nav">
+      <a href="index.html">My Garden</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="library.html">Plant Library</a>
+      <a href="tips.html">Care Tips</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© 2026 Verdant Plant Care Tracker. Made with 🌿 and love.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="main.js"></script>
+<script>
+function markDone(btn) {
+  const row = btn.closest('.task-row');
+  row.style.opacity = '0.4';
+  row.style.textDecoration = 'line-through';
+  btn.textContent = '✓ Done!';
+  btn.disabled = true;
+  btn.style.background = '#a3c4a0';
+  showToast('✅ Task marked as done!');
+}
+function markAllDone() {
+  document.querySelectorAll('.btn-done').forEach(btn => {
+    const row = btn.closest('.task-row');
+    row.style.opacity = '0.4';
+    btn.textContent = '✓ Done!';
+    btn.disabled = true;
+    btn.style.background = '#a3c4a0';
+  });
+  showToast('🎉 All tasks completed! Great gardening!');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plant Library | Verdant</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand"><a href="index.html" style="text-decoration:none;color:inherit;">🌿 <span>Verdant</span></a></div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">My Garden</a></li>
+    <li><a href="schedule.html" class="nav-link">Schedule</a></li>
+    <li><a href="library.html" class="nav-link active">Plant Library</a></li>
+    <li><a href="tips.html" class="nav-link">Care Tips</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">My Garden</a>
+  <a href="schedule.html" onclick="toggleMenu()">Schedule</a>
+  <a href="library.html" onclick="toggleMenu()">Plant Library</a>
+  <a href="tips.html" onclick="toggleMenu()">Care Tips</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+</div>
+
+<div class="page-hero">
+  <p class="hero-eyebrow">Explore & Discover</p>
+  <h1>Plant <em>Library</em></h1>
+  <p>Browse popular plants and find your next green companion</p>
+</div>
+
+<section class="library-section">
+
+  <div class="search-bar-wrap">
+    <input class="search-bar" type="text" placeholder="🔍  Search plants..." oninput="searchPlants(this.value)"/>
+  </div>
+
+  <div class="filter-row" style="margin-bottom:2rem;">
+    <button class="tag-btn active" onclick="filterLib('all',this)">All</button>
+    <button class="tag-btn" onclick="filterLib('easy',this)">😊 Easy Care</button>
+    <button class="tag-btn" onclick="filterLib('medium',this)">🌤️ Medium</button>
+    <button class="tag-btn" onclick="filterLib('hard',this)">🌧️ Expert</button>
+    <button class="tag-btn" onclick="filterLib('pet-safe',this)">🐾 Pet Safe</button>
+  </div>
+
+  <div class="lib-grid" id="libGrid">
+
+    <div class="lib-card" data-diff="easy" data-pet="pet-safe" data-name="pothos">
+      <div class="lib-emoji">🍃</div>
+      <h3>Pothos</h3>
+      <p class="lib-scientific">Epipremnum aureum</p>
+      <div class="lib-tags"><span class="diff-tag easy">Easy</span><span class="diff-tag pet">🐾 Not Pet Safe</span></div>
+      <div class="lib-details">
+        <p>💧 Every 7–10 days</p>
+        <p>☀️ Low to medium light</p>
+        <p>🌡️ 15–29°C</p>
+      </div>
+      <button class="btn-add-lib" onclick="addToGarden('Pothos','🍃')">+ Add to Garden</button>
+    </div>
+
+    <div class="lib-card" data-diff="easy" data-pet="pet-safe" data-name="spider plant">
+      <div class="lib-emoji">🌿</div>
+      <h3>Spider Plant</h3>
+      <p class="lib-scientific">Chlorophytum comosum</p>
+      <div class="lib-tags"><span class="diff-tag easy">Easy</span><span class="diff-tag safe">🐾 Pet Safe</span></div>
+      <div class="lib-details">
+        <p>💧 Every 7 days</p>
+        <p>☀️ Indirect bright</p>
+        <p>🌡️ 13–27°C</p>
+      </div>
+      <button class="btn-add-lib" onclick="addToGarden('Spider Plant','🌿')">+ Add to Garden</button>
+    </div>
+
+    <div class="lib-card" data-diff="easy" data-name="snake plant">
+      <div class="lib-emoji">🌱</div>
+      <h3>Snake Plant</h3>
+      <p class="lib-scientific">Sansevieria trifasciata</p>
+      <div class="lib-tags"><span class="diff-tag easy">Easy</span><span class="diff-tag pet">🐾 Not Pet Safe</span></div>
+      <div class="lib-details">
+        <p>💧 Every 14–21 days</p>
+        <p>☀️ Any light</p>
+        <p>🌡️ 16–27°C</p>
+      </div>
+      <button class="btn-add-lib" onclick="addToGarden('Snake Plant','🌱')">+ Add to Garden</button>
+    </div>
+
+    <div class="lib-card" data-diff="medium" data-pet="pet-safe" data-name="monstera">
+      <div class="lib-emoji">🪴</div>
+      <h3>Monstera</h3>
+      <p class="lib-scientific">Monstera deliciosa</p>
+      <div class="lib-tags"><span class="diff-tag medium">Medium</span><span class="diff-tag pet">🐾 Not Pet Safe</span></div>
+      <div class="lib-details">
+        <p>💧 Every 10 days</p>
+        <p>☀️ Medium indirect</p>
+        <p>🌡️ 18–27°C</p>
+      </div>
+      <button class="btn-add-lib" onclick="addToGarden('Monstera','🪴')">+ Add to Garden</button>
+    </div>
+
+    <div class="lib-card" data-diff="easy" data-pet="pet-safe" data-name="peace lily">
+      <div class="lib-emoji">🌺</div>
+      <h3>Peace Lily</h3>
+      <p class="lib-scientific">Spathiphyllum wallisii</p>
+      <div class="lib-tags"><span class="diff-tag easy">Easy</span><span class="diff-tag pet">🐾 Not Pet Safe</span></div>
+      <div class="lib-details">
+        <p>💧 Every 7 days</p>
+        <p>☀️ Low to medium</p>
+        <p>🌡️ 18–30°C</p>
+      </div>
+      <button class="btn-add-lib" onclick="addToGarden('Peace Lily','🌺')">+ Add to Garden</button>
+    </div>
+
+    <div class="lib-card" data-diff="easy" data-name="cactus">
+      <div class="lib-emoji">🌵</div>
+      <h3>Cactus</h3>
+      <p class="lib-scientific">Cactaceae family</p>
+      <div class="lib-tags"><span class="diff-tag easy">Easy</span><span class="diff-tag safe">🐾 Pet Safe</span></div>
+      <div class="lib-details">
+        <p>💧 Every 14–21 days</p>
+        <p>☀️ Bright direct</p>
+        <p>🌡️ 18–32°C</p>
+      </div>
+      <button class="btn-add-lib" onclick="addToGarden('Cactus','🌵')">+ Add to Garden</button>
+    </div>
+
+    <div class="lib-card" data-diff="hard" data-name="orchid">
+      <div class="lib-emoji">🌸</div>
+      <h3>Orchid</h3>
+      <p class="lib-scientific">Phalaenopsis sp.</p>
+      <div class="lib-tags"><span class="diff-tag hard">Expert</span><span class="diff-tag safe">🐾 Pet Safe</span></div>
+      <div class="lib-details">
+        <p>💧 Every 7–10 days</p>
+        <p>☀️ Bright indirect</p>
+        <p>🌡️ 16–24°C</p>
+      </div>
+      <button class="btn-add-lib" onclick="addToGarden('Orchid','🌸')">+ Add to Garden</button>
+    </div>
+
+    <div class="lib-card" data-diff="medium" data-pet="pet-safe" data-name="boston fern">
+      <div class="lib-emoji">🌿</div>
+      <h3>Boston Fern</h3>
+      <p class="lib-scientific">Nephrolepis exaltata</p>
+      <div class="lib-tags"><span class="diff-tag medium">Medium</span><span class="diff-tag safe">🐾 Pet Safe</span></div>
+      <div class="lib-details">
+        <p>💧 Every 3–5 days</p>
+        <p>☀️ Indirect light</p>
+        <p>🌡️ 18–24°C</p>
+      </div>
+      <button class="btn-add-lib" onclick="addToGarden('Boston Fern','🌿')">+ Add to Garden</button>
+    </div>
+
+    <div class="lib-card" data-diff="hard" data-name="bonsai">
+      <div class="lib-emoji">🌳</div>
+      <h3>Bonsai Tree</h3>
+      <p class="lib-scientific">Various species</p>
+      <div class="lib-tags"><span class="diff-tag hard">Expert</span></div>
+      <div class="lib-details">
+        <p>💧 Daily / as needed</p>
+        <p>☀️ Bright + fresh air</p>
+        <p>🌡️ Varies by species</p>
+      </div>
+      <button class="btn-add-lib" onclick="addToGarden('Bonsai','🌳')">+ Add to Garden</button>
+    </div>
+
+  </div>
+  <p class="no-results" id="noResults" style="display:none;text-align:center;color:#8a9e85;padding:2rem;">No plants found. Try a different search!</p>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">🌿 Verdant</div>
+    <nav class="footer-nav">
+      <a href="index.html">My Garden</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="library.html">Plant Library</a>
+      <a href="tips.html">Care Tips</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© 2026 Verdant Plant Care Tracker. Made with 🌿 and love.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="main.js"></script>
+<script>
+function searchPlants(val) {
+  const v = val.toLowerCase();
+  let visible = 0;
+  document.querySelectorAll('.lib-card').forEach(card => {
+    const name = card.getAttribute('data-name') || '';
+    const match = name.includes(v) || v === '';
+    card.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+}
+let libFilter = 'all';
+function filterLib(type, btn) {
+  libFilter = type;
+  document.querySelectorAll('.library-section .filter-row .tag-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.lib-card').forEach(card => {
+    if (type === 'all') { card.style.display = ''; return; }
+    if (type === 'pet-safe') { card.style.display = card.getAttribute('data-pet') === 'pet-safe' ? '' : 'none'; return; }
+    card.style.display = card.getAttribute('data-diff') === type ? '' : 'none';
+  });
+}
+function addToGarden(name, emoji) {
+  showToast(`🌱 ${emoji} ${name} added to your garden!`);
+}
+</script>
+</body>
+</html>
