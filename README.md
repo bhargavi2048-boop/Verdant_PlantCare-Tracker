@@ -1,1 +1,0 @@
-# Verdant_PlantCare-Tracker
